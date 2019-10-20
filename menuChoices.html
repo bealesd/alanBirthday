@@ -1,0 +1,45 @@
+<html>
+    <head>
+            <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <script type="text/javascript" src="bdayMeal.js"></script>
+    </head>
+
+    <body>
+        <div id='view'></div>
+    </body>
+
+    <script>
+        const mainId = 'view';
+        const choices = JSON.parse(window.bdayMeal);
+
+        menuHtml = '';
+
+        for (let i =0; i<Object.keys(choices).length; i++){
+            const name = Object.keys(choices)[i];
+            const starter = choices[name].starter.join(', ');
+            const main = choices[name].main.join(', ');
+            const desert = choices[name].desert.join(', ');
+            const notes = choices[name].notes.join(', ');
+            const empty = '&nbsp';
+            let html = 
+                `<div class="menuChoice">
+                 <div class="name">${name.toUpperCase()}</div>
+                 <div class="field">Starter</div>
+                 <div class="meal">${starter == '' ? empty: starter}</div>
+                 <div class="field">Main</div>
+                 <div class="meal">${main == '' ? empty: main}</div>
+                 <div class="field">Desert</div>
+                 <div class="meal">${desert == '' ? empty: desert}</div>
+                 <div class="field">Notes</div>
+                 <div class="notes">${notes == '' ? empty: notes}</div>
+                </div>`;
+            menuHtml += html;
+        }
+
+        document.querySelector(`#${mainId}`).innerHTML = menuHtml;
+    </script>
+</html>
+
+
+
