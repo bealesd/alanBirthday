@@ -11,13 +11,28 @@
     </body>
 
     <script>
+        function compareNames(a, b) {
+            a = a.trim();
+            b = b.trim();
+            var splitA = a.split(" ");
+            var splitB = b.split(" ");
+            var lastA = splitA[splitA.length - 1];
+            var lastB = splitB[splitB.length - 1];
+            if (lastA < lastB) return -1;
+            if (lastA > lastB) return 1;
+            return 0;
+        }
+
         const mainId = 'view';
+
         const choices = JSON.parse(window.bdayMeal);
+        let names = Object.keys(choices)
+        names.sort(compareNames);
 
         menuHtml = '';
 
-        for (let i =0; i<Object.keys(choices).length; i++){
-            const name = Object.keys(choices)[i];
+        for (let i =0; i<names.length; i++){
+            const name = names[i];
             const starter = choices[name].starter.join(', ');
             const main = choices[name].main.join(', ');
             const desert = choices[name].desert.join(', ');
