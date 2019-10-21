@@ -45,7 +45,7 @@
 
         function scrollToName(name){
             const namesLowerCase = lowerCaseNames(names);
-            const position =  postionOfValueInArray(name, namesLowerCase);
+            const position =  postionOfValueInArray(name.toLowerCase(), namesLowerCase);
             if (position !== null ){
                 const menuDom = document.querySelectorAll(`.menuChoice`)[position];
                 window.scrollTo(0, menuDom.offsetTop - document.querySelector(`#search`).offsetHeight);
