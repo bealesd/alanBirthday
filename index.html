@@ -4,10 +4,15 @@
             <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="style.css">
+            
             <script type="text/javascript" src="bdayMeal.js"></script>
     </head>
 
     <body>
+        <div id='search'>
+            <input id="searchInput" type="text" placeholder=" search a name" maxlength="15">
+        </div>
+        
         <div id='view'></div>
     </body>
 
@@ -15,14 +20,42 @@
         function compareNames(a, b) {
             a = a.trim();
             b = b.trim();
-            var splitA = a.split(" ");
-            var splitB = b.split(" ");
-            var lastA = splitA[splitA.length - 1];
-            var lastB = splitB[splitB.length - 1];
+            const splitA = a.split(" ");
+            const splitB = b.split(" ");
+            const lastA = splitA[splitA.length - 1];
+            const lastB = splitB[splitB.length - 1];
             if (lastA < lastB) return -1;
             if (lastA > lastB) return 1;
             return 0;
         }
+
+        function lowerCaseNames(){
+            let sorted = [];
+            for (let i = 0; i < names.length; i++) sorted.push(names[i].toLowerCase());
+            return sorted;
+        }
+
+        function postionOfValueInArray(value, array){
+            for (let i = 0; i < array.length; i++) {
+                const arrayElement = array[i];
+                if (arrayElement.includes(value)) return i;
+            }
+            return null;
+        }
+
+        function scrollToName(name){
+            const namesLowerCase = lowerCaseNames(names);
+            const position =  postionOfValueInArray(name, namesLowerCase);
+            if (position !== null ){
+                const menuDom = document.querySelectorAll(`.menuChoice`)[position];
+                window.scrollTo(0, menuDom.offsetTop - document.querySelector(`#search`).offsetHeight);
+            }
+        }
+
+        //after dom ready
+        document.querySelector(`#searchInput`).addEventListener('input', function(event){
+            scrollToName(event.srcElement.value);
+        }.bind(this));
 
         const mainId = 'view';
 
@@ -30,7 +63,7 @@
         let names = Object.keys(choices)
         names.sort(compareNames);
 
-        menuHtml = '';
+        let menuHtml = '';
 
         for (let i=0; i<names.length; i++){
             const name = names[i];
@@ -39,7 +72,7 @@
             const desert = choices[name].desert.join(', ');
             const notes = choices[name].notes.join(', ');
             const empty = '&nbsp';
-            let html = 
+            const html = 
                 `<div class="menuChoice">
                  <div class="name">${name.toUpperCase()}</div>
                  <div class="field">Starter</div>
