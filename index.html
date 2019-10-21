@@ -48,14 +48,69 @@
             const position =  postionOfValueInArray(name.toLowerCase(), namesLowerCase);
             if (position !== null ){
                 const menuDom = document.querySelectorAll(`.menuChoice`)[position];
-                window.scrollTo(0, menuDom.offsetTop - document.querySelector(`#search`).offsetHeight);
+                window.scrollTo(0, menuDom.offsetTop - document.querySelector(`#search`).offsetHeight - 5);
             }
+        }
+
+        function center(){
+            let bodyWidth = document.querySelector('body').offsetWidth;
+            let menuChoiceElements = document.querySelectorAll('.menuChoice');
+            // get cols
+            // let cols = 0;
+            // let y = 0
+            // for (let i =0; i<menuChoiceElements.length; i++){
+            //     let menuElement = menuChoiceElements[i];
+            //     const rect = menuElement.getBoundingClientRect()
+            //     if (i === 0){
+            //         y = rect.y;
+            //         cols++;
+            //     }
+            //     else if (rect.y === y){
+            //         cols++;
+            //     }
+            //     else {
+            //         break;
+            //     }
+            // }
+
+            const menuWidth = 345;
+
+            //calc cols
+            const cols = Math.floor(bodyWidth / menuWidth);
+            const totalMenuWidth = menuWidth * cols;
+
+            const gutter = (bodyWidth - totalMenuWidth) / 2;
+
+            //space menu choices evenly
+            // for (let i =0; i<menuChoiceElements.length; i++){
+            //     let menuElement = menuChoiceElements[i];
+            //     if(i % cols === 0){
+            //         menuElement.style.marginLeft =`${gutter}px`;
+            //     }
+                
+            // }
+        }
+
+        function resizeThrottler (callback) {
+            let resizeTimeout;
+            if (!resizeTimeout) {
+                resizeTimeout = setTimeout(function () {
+                    resizeTimeout = null;
+                    callback();
+                }.bind(this), 1000);
+            }
+        }
+
+        function onResize() {
+            window.addEventListener("resize", this.resizeThrottler.bind(this, center), false);
         }
 
         //after dom ready
         document.querySelector(`#searchInput`).addEventListener('input', function(event){
             scrollToName(event.srcElement.value);
         }.bind(this));
+
+        onResize();
 
         const mainId = 'view';
 
