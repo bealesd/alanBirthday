@@ -49,19 +49,19 @@ body {
     }
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1150px) {
     #view {
       grid-template-columns: auto auto auto;
     }
 }
 
-@media (min-width: 1350px) {
+@media (min-width: 1550px) {
     #view {
       grid-template-columns: auto auto auto auto;
     }
 }
 
-@media (min-width: 1650px) {
+@media (min-width: 1850px) {
     #view {
       grid-template-columns: auto auto auto auto auto;
     }
