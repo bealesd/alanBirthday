@@ -6,6 +6,10 @@
             <link rel="stylesheet" type="text/css" href="style.css">
             
             <script type="text/javascript" src="bdayMeal.js"></script>
+            <noscript>
+                Your browser does not support JavaScript! 
+                This website required JavaScript to render content.
+            </noscript>
     </head>
 
     <body>
@@ -17,6 +21,14 @@
     </body>
 
     <script>
+        if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                .register('/sw.js')
+                .then(function() {
+                    console.log("Service Worker Registered"); 
+                });
+}
+
         function compareNames(a, b) {
             a = a.trim();
             b = b.trim();
