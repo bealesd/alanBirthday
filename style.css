@@ -1,7 +1,7 @@
 body {    
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #ccc;
+    font-family: 'B612', sans-serif;
 }
 
 #search{
@@ -15,7 +15,7 @@ body {
 }
 
 #searchInput{
-    display: block;
+    display: inline-block;
 
     font-size: 20px;
     width: 200px;
@@ -30,8 +30,8 @@ body {
     width: 100%;
 
     /* font-family: 'Kalam', cursive; */
-    font-family: 'B612', sans-serif;
-    color:  rgb(223, 221, 221);
+    /* color:  rgb(223, 221, 221); */
+    color:white;
 
     margin-top: 60px;
 
@@ -68,7 +68,7 @@ body {
 
 .menuChoice{
     display: inline-block;
-    background-color: #546e78;
+    background-color: #C33CAF;
 
     padding: 1px 20px;
     border-radius: 4px;

@@ -1,6 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+            <title>Menu Choices</title>
+            <meta name="Description" content="Created for Alans dirthday. Attendees choices for their meals.">
+            <meta name="theme-color" content="#317EFB"/>
             <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="manifest" href="/manifest.json">
             <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="style.css">
@@ -14,7 +20,10 @@
 
     <body>
         <div id='search'>
-            <input id="searchInput" type="text" placeholder=" search a name" maxlength="15">
+            <form>
+                <label style="display:inline-block" for="searchInput">&nbsp Search</label> 
+                <input id="searchInput" type="text" placeholder=" search a name" maxlength="15">
+            </form>
         </div>
         
         <div id='view'></div>
