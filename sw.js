@@ -20,8 +20,21 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName)
       .then(cache => cache.match(event.request, {ignoreSearch: true}))
-      .then(response => {
-      return response || fetch(event.request);
+      .then(cachedFiles => {
+        console.log(`Event.request: ${event.request}`);
+        console.log(`response: ${response}`);
+        if (cachedFiles) {return cachedFiles;}
+        else {
+            return fetch(event.request);
+        }
+
+    }).catch(error => {
+        console.log(`Files not cached and you are offline. Meesage: ${error}`);
     })
   );
 });
+
+// if (event.request.method === 'GET' &&
+//         event.request.headers.get('accept').indexOf('text/html') !== -1){
+
+//         }

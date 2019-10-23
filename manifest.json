@@ -4,5 +4,11 @@
   "short_name": "AlanBdayMenus",
   "background_color": "#3367D6",
   "display": "standalone",
-  "theme_color": "#3367D6"
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "/alan.png",
+      "type": "image/png",
+      "sizes": "205x251"
+    }]
  }
