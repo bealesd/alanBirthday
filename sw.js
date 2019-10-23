@@ -3,9 +3,9 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        `/`,
-        `/style.css`,
-        `/bdayMeal.js`
+        `./`,
+        `./style.css`,
+        `./bdayMeal.js`,
       ])
           .then(() => self.skipWaiting());
     })
