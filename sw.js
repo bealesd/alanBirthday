@@ -4,14 +4,15 @@ self.addEventListener('install', e => {
     caches.open(cacheName).then(cache => {
       return cache.addAll([
         `/`,
-        `/index.html`,
-        `/style.css`,
-        `/bdayMeal.js`,
-        `/alan192.png`,
-        `/alan144.png`,
-        `/alan96.png`
+        `./index.html`,
+        `./style.css`,
+        `./bdayMeal.js`,
+        `./alan192.png`,
+        `./alan144.png`,
+        `./alan96.png`
       ])
-          .then(() => self.skipWaiting());
+          .then(() => 
+            self.skipWaiting());
     })
   );
 });
@@ -23,9 +24,10 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName)
-      .then(cache => cache.match(event.request, {ignoreSearch: true}))
+      .then(cache => 
+        cache.match(event.request, {ignoreSearch: true}))
       .then(response => {
-      return response || fetch(event.request);
+        return response || fetch(event.request);
     })
   );
 });
