@@ -3,9 +3,13 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        `./`,
-        `./style.css`,
-        `./bdayMeal.js`,
+        `/`,
+        `/index.html`,
+        `/style.css`,
+        `/bdayMeal.js`,
+        `/alan192.png`,
+        `/alan144.png`,
+        `/alan96.png`
       ])
           .then(() => self.skipWaiting());
     })
@@ -20,21 +24,8 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName)
       .then(cache => cache.match(event.request, {ignoreSearch: true}))
-      .then(cachedFiles => {
-        console.log(`Event.request: ${event.request}`);
-        console.log(`response: ${response}`);
-        if (cachedFiles) {return cachedFiles;}
-        else {
-            return fetch(event.request);
-        }
-
-    }).catch(error => {
-        console.log(`Files not cached and you are offline. Meesage: ${error}`);
+      .then(response => {
+      return response || fetch(event.request);
     })
   );
 });
-
-// if (event.request.method === 'GET' &&
-//         event.request.headers.get('accept').indexOf('text/html') !== -1){
-
-//         }
