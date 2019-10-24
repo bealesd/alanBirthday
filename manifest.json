@@ -7,17 +7,17 @@
   "theme_color": "#3367D6",
   "icons": [
     {
-      "src": "/alan96.png",
+      "src": "./alan96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-        "src": "/alan144.png",
+        "src": "./alan144.png",
         "type": "image/png",
         "sizes": "144x144"
     },
     {
-        "src": "/alan192.png",
+        "src": "./alan192.png",
         "type": "image/png",
         "sizes": "192x192"
     }    
