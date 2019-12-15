@@ -11,7 +11,7 @@ foodChoices = {}
 
 starters = ['Soup','Salad','Salmon','Small Chicken Strips','Salad']
 mains = ['Turkey','Sea Bass','Cauliflower','Big Beef Burger','Pizza','Penne']
-deserts = ['Xmas Pudding','Cheesecake','Pavlova','Ice Cream','Chocolatey', 'Lava cake']
+deserts = ['Christmas Pudding','Cheesecake','Pavlova','Ice Cream','Chocolatey', 'Lava cake']
 
 with open(filePath, newline='\n') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
