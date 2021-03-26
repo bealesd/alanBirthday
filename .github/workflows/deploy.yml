@@ -35,15 +35,11 @@ jobs:
       run: echo "$GITHUB_ACTOR @users.noreply.github.com"
 
     - name: Git Globals
-      inputs:
-        author_name:
-          required: false
-          default: ${{ github.actor }}
-        author_email:
-          required: false
-          default: ${{ github.actor }}@users.noreply.github.com
+      env:
+        ACTOR: ${{ github.actor }}
+        AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
-      run: echo "$INPUT_AUTHOR_EMAIL"
+      run: echo "$ACTOR"
            git config --global user.email "${{ github.actor }}r@users.noreply.github.com" \
            git config --global user.name "$GITHUB_ACTOR"
 
