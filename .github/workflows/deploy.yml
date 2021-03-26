@@ -27,4 +27,7 @@ jobs:
         python loadBirthMealToArray.py
 
     - name: Commit birthday menu changes
-      run: if [[ `git status --porcelain` ]]; then git add . && git commit -m"Auto update birthday menu"
+      run: if [[ `git status --porcelain` ]]; then
+            git add . && git commit -m"Auto update birthday menu"
+            exit 1
+          fi
