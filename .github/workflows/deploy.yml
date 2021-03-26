@@ -29,10 +29,10 @@ jobs:
 
     - name: Test Conditional
       run: |
-        if [[ `git status --porcelain` ]]; then  echo "yes"; else echo "no"; fi
+        if [[ `git status --porcelain` ]]; then echo "yes"; else echo "no"; fi
 
     - name: Commit birthday menu changes
-       run: |
+      run: |
          if [[ `git status --porcelain` ]]; then
            git add . && git commit -m"Auto update birthday menu"
          else
