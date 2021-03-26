@@ -26,8 +26,15 @@ jobs:
       run: |
         python loadBirthMealToArray.py
 
+
+    - name: Test Conditional
+            run: |
+              if [[ `git status --porcelain` ]]; then  echo "yes"; else echo "no"; fi
+
     - name: Commit birthday menu changes
-      run: if [[ `git status --porcelain` ]]; then
-            git add . && git commit -m"Auto update birthday menu"
-            exit 1
-          fi
+            run: |
+              if [[ `git status --porcelain` ]]; then
+                git add . && git commit -m"Auto update birthday menu"
+              else
+                  # run the other command
+              fi
