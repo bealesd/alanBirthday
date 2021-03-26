@@ -40,15 +40,15 @@ jobs:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
-      run: git config --global user.email "${{ ACTOR }}@users.noreply.github.com" \
-           git config --global user.name "${{ AUTHOR_EMAIL }}"
+      run: git config --global user.email "$ACTOR""@users.noreply.github.com" \
+           git config --global user.name "${ AUTHOR_EMAIL }"
 
     - name: Commit birthday menu changes
       env:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       run: |
-        git config --global user.email "${{ ACTOR }}@users.noreply.github.com" \
-        git config --global user.name "${{ AUTHOR_EMAIL }}" \
+        git config --global user.email "${ ACTOR }@users.noreply.github.com" \
+        git config --global user.name "${ AUTHOR_EMAIL }" \
         if [[ `git status --porcelain` ]]; then  git add . && git commit -m"Auto update birthday menu" && echo "changes committed"; else echo "no changes to commit"; fi
 
