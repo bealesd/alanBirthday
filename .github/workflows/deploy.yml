@@ -29,26 +29,26 @@ jobs:
     - name: many way to get variable print config
       env:
         ACTOR: ${{ github.actor }}
-      run: echo "$GITHUB_ACTOR""@users.noreply.github.com" \
-          echo "${GITHUB_ACTOR}@users.noreply.github.com" \
-          echo "$GITHUB_ACTOR" \
-          echo "$ACTOR"
-          echo "${{ github.actor }}"
+      run: echo "$GITHUB_ACTOR""@users.noreply.github.com
+          ${GITHUB_ACTOR}@users.noreply.github.com
+          $GITHUB_ACTOR
+          $ACTOR
+          ${{ github.actor }}"
 
     - name: Git Globals
       env:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
-      run: git config --global user.email "${ ACTOR }@users.noreply.github.com" \
-           git config --global user.name "${ AUTHOR_EMAIL }"
+      run: git config --global user.email "${{ ACTOR }}@users.noreply.github.com" \
+           git config --global user.name "${{ AUTHOR_EMAIL }}"
 
     - name: Commit birthday menu changes
       env:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       run: |
-        git config --global user.email "${ ACTOR }@users.noreply.github.com" \
-        git config --global user.name "${ AUTHOR_EMAIL }" \
+        git config --global user.email "${{ ACTOR }}@users.noreply.github.com" \
+        git config --global user.name "${{ AUTHOR_EMAIL }}" \
         if [[ `git status --porcelain` ]]; then  git add . && git commit -m"Auto update birthday menu" && echo "changes committed"; else echo "no changes to commit"; fi
 
