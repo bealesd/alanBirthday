@@ -30,7 +30,11 @@ jobs:
     - name: Test Conditional
       run: |
         if [[ `git status --porcelain` ]]; then echo "yes"; else echo "no"; fi
-   
+    
+    - name: Git Globals
+      run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" \
+           git config --global user.name "$GITHUB_ACTOR"
+
     - name: Commit birthday menu changes
       run: |
         if [[ `git status --porcelain` ]]; then  git add . && git commit -m"Auto update birthday menu" && echo "changes committed"; else echo "no changes to commit"; fi
