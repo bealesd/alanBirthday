@@ -26,7 +26,7 @@ jobs:
       run: |
         python loadBirthMealToArray.py
     
-    - name: many way to get variable print config
+    - name: Variable Interpolation
       env:
         ACTOR: ${{ github.actor }}
       run: echo "$GITHUB_ACTOR""@users.noreply.github.com
@@ -36,20 +36,20 @@ jobs:
           ${ACTOR}@users.noreply.github.com
           ${{ github.actor }}"
 
-    - name: Git Globals
-      env:
-        ACTOR: ${{ github.actor }}
-        AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+    # - name: Git Globals
+    #   env:
+    #     ACTOR: ${{ github.actor }}
+    #     AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
-      run: git config --global user.email $AUTHOR_EMAIL
-          #  git config --global user.name $ACTOR
+    #   run: git config --global user.email $AUTHOR_EMAIL; \
+    #       git config --global user.name $ACTOR
 
     - name: Commit birthday menu changes
       env:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       run: |
-        git config --global user.email $AUTHOR_EMAIL \
-        git config --global user.name $ACTOR \
+        git config --global user.email $AUTHOR_EMAIL; \
+        git config --global user.name $ACTOR; \
         if [[ `git status --porcelain` ]]; then  git add . && git commit -m"Auto update birthday menu" && echo "changes committed"; else echo "no changes to commit"; fi
 
