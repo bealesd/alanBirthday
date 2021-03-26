@@ -13,9 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Git Status
-      run: git status
       
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -36,20 +33,16 @@ jobs:
           ${ACTOR}@users.noreply.github.com
           ${{ github.actor }}"
 
-    # - name: Git Globals
-    #   env:
-    #     ACTOR: ${{ github.actor }}
-    #     AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
-
-    #   run: git config --global user.email $AUTHOR_EMAIL; \
-    #       git config --global user.name $ACTOR
-
     - name: Commit birthday menu changes
       env:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       run: |
+        git status; \
         git config --global user.email $AUTHOR_EMAIL; \
         git config --global user.name $ACTOR; \
-        if [[ `git status --porcelain` ]]; then  git add . && git commit -m"Auto update birthday menu" && echo "changes committed"; else echo "no changes to commit"; fi
+        if [[ `git status --porcelain` ]]; \
+        then git add . && git commit -m"Auto update birthday menu" && echo "changes committed" && git push; \
+        else echo "no changes to commit"; \
+        fi
 
