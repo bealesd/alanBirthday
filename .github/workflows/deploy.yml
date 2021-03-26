@@ -41,8 +41,8 @@ jobs:
         ACTOR: ${{ github.actor }}
         AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
 
-      run: git config --global user.email $AUTHOR_EMAIL \
-           git config --global user.name $ACTOR
+      run: git config --global user.email $AUTHOR_EMAIL
+          #  git config --global user.name $ACTOR
 
     - name: Commit birthday menu changes
       env:
